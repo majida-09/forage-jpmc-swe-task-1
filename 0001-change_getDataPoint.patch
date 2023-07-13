@@ -1,0 +1,28 @@
+From 66f000b82eda2840aeb8bff555e96022af2a38ef Mon Sep 17 00:00:00 2001
+From: majida-09 <107997976+majida-09@users.noreply.github.com>
+Date: Thu, 13 Jul 2023 17:31:36 +0530
+Subject: [PATCH] change_getDataPoint
+
+---
+ client3.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/client3.py b/client3.py
+index e1cfa5c..9e9d7a6 100644
+--- a/client3.py
++++ b/client3.py
+@@ -54,8 +54,10 @@ if __name__ == "__main__":
+         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
+ 
+         """ ----------- Update to get the ratio --------------- """
++        prices = {}
+         for quote in quotes:
+             stock, bid_price, ask_price, price = getDataPoint(quote)
++            prices[stock] = price
+             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+ 
+-        print("Ratio %s" % getRatio(price, price))
++        print("Ratio %s" % getRatio(prices["ABC"], prices["DEF"]))
+-- 
+2.37.3.windows.1
+
